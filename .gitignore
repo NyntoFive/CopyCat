@@ -7,3 +7,4 @@ Pipfile
 Pipfile.lock
 
 tmp/
+db.sqlite3
