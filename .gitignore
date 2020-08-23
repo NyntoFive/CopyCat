@@ -1,0 +1,8 @@
+venv/
+db.*
+.env
+*.pyc
+__pycache__/
+Pipfile
+Pipfile.lock
+
