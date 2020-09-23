@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Ckk.apps.CkkConfig',
+    'ckk.apps.CkkConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
     'main',
+
     'django_extensions',
+    'taggit',
 ]
 
 MIDDLEWARE = [

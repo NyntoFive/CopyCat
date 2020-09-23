@@ -19,22 +19,17 @@ def main():
     Report Findings
 
     '''
-    sites = ['https://knifekits.com/vcom/','https://holstersmith.com/vcom/']
-    kk, hs = check_for_sku(sku, sites[0]), check_for_sku(sku, sites[1])
-    
-    if not kk:
-        print("No KK")
-    if not hs:
-        print("NO HS")
-    
-QueryData = {
-    "Matches": "meta[itemprop='numberOfItems']", # Css
-    "Name": xpath('//h2/descendant::span[@itemprop="name"]/text()')
-    "Name": xpath('//h2/a[@itemprop="url"]/@href')
-    "Description": kk.html.xpath('//*[@itemprop="description"]/text()')[0].strip()
-}
 
-def check_for_sku(sku, shop):
+    # Check Shops for a SKU
+    def query_for_sku(sku):
+        shop_urls = ['https://{}.com/vcom/advanced_search.php?']
+        for url in urls:
+            session=HTMLSession()
+            
+
+
+
+def check_for_sku(sku):
     """Search for a product SKU per shop
     :param [sku] A Product SKU: "AV-KYSHE-BTLSHP-06-2448"
     :param [shop]: BaseURL of the website (shop) you want to check: "https://knifekits.com/vcom/"
@@ -67,10 +62,12 @@ def parse_product_url(page):
     images = [img for img in all_images if img.startswith("images/") and "600" in img or "800" in img and ".jpg" in img]
     link = page.url
     if "knifekits.com" in link:
-        shop=0
-    if "holstersmith.com" in link:
-        shop=1
-    
+        shop="Knifekits.com"
+    elif "holstersmith.com" in link:
+        shop="Holstersmith.com"
+    else:
+        shop=""
+
     Data = {"description":description, 
             "price":price,
             "sku":sku,
@@ -84,33 +81,31 @@ def parse_product_url(page):
             }
     return Data
     
-async def get_knifekits(sku):
-    # Test SKU=AV-KYSHE-BTLSHP-06-2448
-    url = "https://www.knifekits.com/vcom/kydex-sheet-colors-battleship-gray-c-1071_54_652_805.html"
-    kk_r = await asess.get(url)
+# async def get_knifekits(sku):
+#     # Test SKU=AV-KYSHE-BTLSHP-06-2448
+#     url = "https://www.knifekits.com/vcom/kydex-sheet-colors-battleship-gray-c-1071_54_652_805.html"
+#     kk_r = await asess.get(url)
     
-    r.html.find('img[alt="{}"]'.format(sku))
-    images = [x.attrs.get('src') for x in imgs]
+#     r.html.find('img[alt="{}"]'.format(sku))
+#     images = [x.attrs.get('src') for x in imgs]
 
-    return kk_r
-
-
+#     return kk_r
 
 
-async def get_holstersmith(sku):
-    # Tes SKU = AV-KYSHE-BTLSHP-06-2448
-    url = "https://www.holstersmith.com/vcom/kydex-sheet-battleship-gray-060-2ft-4ft-p-7004.html"
-    hs_r = await asess.get(url)
+# async def get_holstersmith(sku):
+#     # Tes SKU = AV-KYSHE-BTLSHP-06-2448
+#     url = "https://www.holstersmith.com/vcom/kydex-sheet-battleship-gray-060-2ft-4ft-p-7004.html"
+#     hs_r = await asess.get(url)
 
-    imgs=r.html.find('img[alt="{}"]'.format(sku))
-    images = [x.attrs.get('src') for x in imgs]
-    for IMG in images:
-        base='https://holstersmith.com/vcom/'
-        for I in images:
-            HS_img = sess.get(base+I)
+#     imgs=r.html.find('img[alt="{}"]'.format(sku))
+#     images = [x.attrs.get('src') for x in imgs]
+#     for IMG in images:
+#         base='https://holstersmith.com/vcom/'
+#         for I in images:
+#             HS_img = sess.get(base+I)
     
-    match = search_sku(sku)
-    # dl_img(images)
+#     match = search_sku(sku)
+#     # dl_img(images)
 
 
 def make_thumbs(filename):

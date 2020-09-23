@@ -4,9 +4,7 @@
 
 <div>
   <form action="." method="post" class="form-signin">
-
     {% csrf_token %}
-
     <h2 class="form-signin-heading">Login</h2>
     <label for="inputUsername" class="sr-only">User name</label>
     {{form.username}}
@@ -25,5 +23,4 @@
     {% endif %}
   </div>
 </div>
-
 {% endblock %}
