@@ -28,8 +28,9 @@ class Product(models.Model):
     crawled_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     shop = models.ForeignKey(Shop, null=False, default=0, on_delete=models.CASCADE)
+    
 
-    tags = TaggableManager()
+    
     objects = ProductManager()
     class Meta:
         ordering = ['sku']

@@ -8,3 +8,5 @@ Pipfile.lock
 
 tmp/
 db.sqlite3
+package.json
+Archive/
