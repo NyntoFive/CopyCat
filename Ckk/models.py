@@ -41,10 +41,24 @@ class Product(models.Model):
     def __str__(self):
         return self.sku
 
-# class CKKItem(models.Model):
-#     sku = models.CharField(max_length=100)
-#     name = models.CharField(max_length=200, blank=True)
-#     image = models.URLField()
-#     price = models.DecimalField(max_digits=8, decimal_places=2)
-#     description = models.TextField()
-#     link = models.URLField()
+
+class ProductImage(models.ManyToManyField):
+    img = models.ImageField(upload_to="ckk/images", blank=True)
+    url = models.URLField()
+    image = models.ForeignKey(CKKItem, null=False, default=0, on_delete=models.CASCADE)
+
+
+class Keywords(models.Model):
+    keyword = models.ForeignKey(CKKItem,null=False, default=0,on_delete=models.CASCADE)
+    sku = models.CharField(max_length=50)
+    
+class CKKItem(models.Model):
+    images = models.ForeignKey(ProductImage, on_delete=CASCADE)
+    sku = models.CharField(max_length=100)
+    title = models.CharField(max_length=200, blank=True)
+    url = models.URLField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    description = models.TextField()
+    keyword = models.ForeignKey(Keywords, null=False, default=0, on_delete=models.CASCADE)
+    'images', 'videos', 'description', 'keywords', 'url', 'title', 'status_code'
+
