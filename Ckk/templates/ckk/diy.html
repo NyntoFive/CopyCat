@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 {% block title %}DIY / Build Your Own{% endblock %}
 {% block css %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/neo.css' %}">
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+
+  
+{% endblock %}
 
 {% block content %}
-<div class="diy-wrapper">
-    <div class="container">
 
-        
-        <div class="row">
-            <div class="card-deck">
-                {% include 'ckk/_card.html' %}
-                
-                
-                
-            </div>
-            <!-- END ROW -->
-        </div> 
-        
-        
+<div class="Page">
+    
+    
+    <div class="multi-button">
+        <button class="neo-button">Cut</button>
+        <button class="neo-button">Copy</button>
+        <button class="neo-button">Paste</button>
+       
+    
     </div>
+    
 </div>
-
 {% endblock %}
+

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
+
 class Shop(models.Model):
     name = models.CharField(max_length=50)
 
@@ -27,6 +28,8 @@ class Product(models.Model):
     metaKeywords = models.CharField(max_length=200)    
     crawled_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+    category = models.CharField(max_length=50, default="none")
+    subcat=models.CharField(max_length=50)
     shop = models.ForeignKey(Shop, null=False, default=0, on_delete=models.CASCADE)
     
 
@@ -38,5 +41,10 @@ class Product(models.Model):
     def __str__(self):
         return self.sku
 
-# class Shop(models.Model):
-#     def get_highlighted(models.Manager):
+# class CKKItem(models.Model):
+#     sku = models.CharField(max_length=100)
+#     name = models.CharField(max_length=200, blank=True)
+#     image = models.URLField()
+#     price = models.DecimalField(max_digits=8, decimal_places=2)
+#     description = models.TextField()
+#     link = models.URLField()

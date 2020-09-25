@@ -5,8 +5,11 @@ db.*
 __pycache__/
 Pipfile
 Pipfile.lock
-
+static/src/
 tmp/
 db.sqlite3
 package.json
+
+frontend/
 Archive/
+.ipynb_checkpoints/
