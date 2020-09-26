@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <ul>
-            {% for obj in object_list %}
-                {{obj.sku}}
-                {% endfor %}
-        </ul>
+{% extends "base.html" %}
+{% block title %}SplitView{% endblock %}
+{% block js %}
+$('.carousel-3d-basic').mdbCarousel3d();
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-10" style="border: 5px groove green;">
+            <article>
+                <div class="card">
+                    {% load static %}
+                    <div class="card-img-top"><img src="{% static 'images/placeholder.png' %}" alt=""></div>
+                </div>
+            </article>
+            
+        </div>
     </div>
-    
-</body>
-</html>
+</div>
+{% endblock %}

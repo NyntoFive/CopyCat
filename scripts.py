@@ -54,4 +54,15 @@ def parse_url(url):
             "category":cat,
             "subcategory":subcat
             }
-    return Data 
+    return Data
+
+def crawl_drive(start,fileType="*.mp3"):
+    '''crawls filesystem from start and returns a list of mp3files'''
+    music=[]
+    for folderName, subfolders, filenames in os.walk(start):
+        for subfolder in subfolders:
+            for filename in filenames:
+                if fileType in filename:
+
+                    music.append(filename)
+    return music
