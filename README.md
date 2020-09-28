@@ -1,4 +1,2 @@
-# Django Knifeshop App
-
-Aggregates product data from websites owned by CKK Industries.
+# Weekly Product Updates for websites owned by CKK Industries
 
